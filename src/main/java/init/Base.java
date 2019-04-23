@@ -14,15 +14,24 @@ public abstract class Base {
         return driver.get();
     }
 
-    @BeforeMethod
+    @BeforeClass
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/driverBinaries/chromedriver.exe");
         driver.set(new ChromeDriver());
         driver.get().manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+    }
+
+    @BeforeMethod
+    public void openLoginPage() {
         driver.get().get("https://opensource-demo.orangehrmlive.com/");
     }
 
     @AfterMethod
+    public void deleteCookies() {
+        driver.get().manage().deleteAllCookies();
+    }
+
+    @AfterClass
     public void cleanUp() {
         driver.get().quit();
     }

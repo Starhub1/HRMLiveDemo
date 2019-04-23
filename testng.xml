@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Regresion">
-    <test name="test" parallel="methods" thread-count="3">
+    <test name="test" parallel="classes" thread-count="3">
         <packages>
             <package name="testCases.*"/>
         </packages>
